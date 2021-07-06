@@ -1,5 +1,5 @@
-const prompt = require('prompt-sync')();
-class AddressBook {
+const prompt  = require ('prompt-sync')();
+class EmployeePayrollData{
     //constructor
     constructor(...params){
         this.firstName = params[0];
@@ -10,6 +10,7 @@ class AddressBook {
         this.zip = params[5];
         this.phoneNo = params[6];
         this.emailId = params[7];
+        
     }
 
     //getter and setter
@@ -110,17 +111,19 @@ class AddressBook {
 }
 function createContact() {
     var array1 = new Array();
+     //console.log()
      try {
-    let fName = prompt('Enter first name:');
-    let lName = prompt('Enter last name:');
-    let address = prompt('Enter address:');
-    let city = prompt('Enter city:');
-    let state = prompt('Enter state:');
-    let zip = prompt('Enter zipcode:');
-    let phoneNumber = prompt('Enter phone number:');
-    let email = prompt('Enter email:');
+    let fName = prompt('Enter the first name:');
+    let lName = prompt('Enter the last name:');
+    let address = prompt('Enter the address:');
+    let city = prompt('Enter the city:');
+    let state = prompt('Enter the state:');
+    let zip = prompt('Enter the zipcode:');
+    let phoneNumber = prompt('Enter the phone number:');
+    let email = prompt('Enter the email:');
 
-    let contact = new AddressBook(fName, lName, address, city, state, zip, phoneNumber, email);
+    let contact = new EmployeePayrollData(fName, lName, address, city, state, zip, phoneNumber, email);
+   // let contact = new EmployeePayrollData("Priyanka", "CSE", 30000);
     array1.push(contact);
     console.log(contact.toString());
     console.log(array1);
@@ -129,5 +132,4 @@ function createContact() {
         console.log(e);
     }
 }
-
 createContact();
