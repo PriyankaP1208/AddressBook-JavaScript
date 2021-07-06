@@ -1,6 +1,6 @@
 const prompt = require('prompt-sync')();
+
 class AddressBook {
-    //constructor
     constructor(...params){
         this.firstName = params[0];
         this.lastName = params[1];
@@ -108,26 +108,100 @@ class AddressBook {
                 +", phone no =" + this.phoneNo +", Mail id =" + this.emailId;
     }
 }
-function createContact() {
-    var array1 = new Array();
-     try {
-    let fName = prompt('Enter first name:');
-    let lName = prompt('Enter last name:');
-    let address = prompt('Enter address:');
-    let city = prompt('Enter city:');
-    let state = prompt('Enter state:');
-    let zip = prompt('Enter zipcode:');
-    let phoneNumber = prompt('Enter phone number:');
-    let email = prompt('Enter email:');
 
-    let contact = new AddressBook(fName, lName, address, city, state, zip, phoneNumber, email);
-    array1.push(contact);
-    console.log(contact.toString());
-    console.log(array1);
+let array1 = new Array();
+let choice;
+while(choice != 0)
+{
+    console.log("\n1.Add contacts\n 2.Edit contacts\n 3.Display");
+    choice = Number(prompt("Enter your choice:"));
+    switch(choice)
+    {
+        case 1:
+            createContact();
+            break;
+        case 2:
+            editContacts();
+            break;
+        case 3:
+            display();
+            break;
+        default:
+            console.log("Wrong choice.");   
+    }
+}
+
+function  createContact() {
+    try{
+        let fName = prompt('Enter first name:');
+        let lName = prompt('Enter last name:');
+        let address = prompt('Enter address:');
+        let city = prompt('Enter city:');
+        let state = prompt('Enter state:');
+        let zip = prompt('Enter zipcode:');
+        let phoneNumber = prompt('Enter phone number:');
+        let email = prompt('Enter email:');
+        let contact = 0;
+            
+        contact = new AddressBook(fName, lName, address, city, state, zip, phoneNumber, email);
+        array1.push(contact);
+        console.log(contact.toString());
+        console.log(array1);
     }catch(e)
     {
         console.log(e);
     }
-}
 
-createContact();
+}
+    
+function editContacts () {
+    let fName = prompt ('Enter First name:');
+    array1.find(contact => 
+        { if(contact.firstName == fName)
+            {
+                console.log(contact.toString())
+            
+            let name = prompt("Enter what you want to update:");
+        switch(name)
+        {
+            case "address":
+                let address1 = prompt("Enter new address:");
+                objIndex = array1.findIndex((obj => obj.firstName == fName));
+                array1[objIndex].address = address1;
+                break;
+            case "city":
+                let city1 = prompt("Enter new city name:");
+                objIndex = array1.findIndex((obj => obj.firstName == fName));
+                array1[objIndex].city = city1;
+                break;
+            case "state":
+                let state1 = prompt("Enter new state:");
+                objIndex = array1.findIndex((obj => obj.firstName == fName));
+                array1[objIndex].state = state1;
+                break;
+            case "phoneNo":
+                let phoneNo1 = prompt("Enter new phone number:");
+                objIndex = array1.findIndex((obj => obj.firstName == fName));
+                array1[objIndex].phoneNo = phoneNo1;
+                break;
+            case "zip":
+                let zip1 = prompt("Enter new zip code:");
+                objIndex = array1.findIndex((obj => obj.firstName == fName));
+                array1[objIndex].zip = zip1;
+                break;
+            }
+            console.log("Update Successfully!");
+        }
+        else{
+            console.log("Contact is not existing");
+        }
+    })
+}
+    
+function display()
+{
+    array1.forEach(contact => console.log(contact.toString()));
+}
+    
+
+
