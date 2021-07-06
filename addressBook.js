@@ -113,7 +113,7 @@ let array1 = new Array();
 let choice;
 while(choice != 0)
 {
-    console.log("\n1.Add contacts\n 2.Edit contacts\n 3.Display");
+    console.log("\n1.Add contacts\n 2.Display\n 3.Edit contacts\n 4.Delete contact");
     choice = Number(prompt("Enter your choice:"));
     switch(choice)
     {
@@ -121,10 +121,13 @@ while(choice != 0)
             createContact();
             break;
         case 2:
-            editContacts();
+            display();
             break;
         case 3:
-            display();
+            editContacts();
+            break;
+        case 4:
+            deleteContact();
             break;
         default:
             console.log("Wrong choice.");   
@@ -202,6 +205,13 @@ function display()
 {
     array1.forEach(contact => console.log(contact.toString()));
 }
-    
 
-
+function deleteContact() {
+    let name = prompt("Enter first name to delete contact:");
+    let index = array1.findIndex(contact => (contact.firstName == name));
+    if(index == -1)
+        console.log("Name not found");
+    else
+        array1.splice(index, 1);
+    console.log("Deleted successfuly!");
+}
