@@ -113,7 +113,8 @@ let array1 = new Array();
 let choice;
 while(choice != 0)
 {
-    console.log("\n1.Add contacts\n 2.Display\n 3.Edit contacts\n 4.Delete contact\n 5.Count number of contact");
+    console.log("\n1.Add contacts\n 2.Display\n 3.Edit contacts\n 4.Delete contact\n 5.Count number of contact\n"
+                + "6.Search contact");
     choice = Number(prompt("Enter your choice:"));
     switch(choice)
     {
@@ -131,6 +132,9 @@ while(choice != 0)
             break;
         case 5:
             numberOfContact();
+            break;
+        case 6:
+            search();
             break;
         default:
             console.log("Wrong choice.");   
@@ -236,3 +240,36 @@ function noDuplicate(fName) {
         console.log("Name is not existing");
     }
 }
+
+function search() {
+    console.log(" 1.Search by city\n 2.Search by state");
+    let choice = Number(prompt("Enter your choice:"));
+    switch(choice){
+        case 1:
+            let city = prompt("Enter city name:");
+            array1.find(contact => 
+                { if(contact.city == city)
+                    {
+                        console.log(contact.toString());
+                    }
+                    else
+                    {
+                        console.log("City name not existing!");
+                    }
+                });
+            break;
+        case 2:
+            let state = prompt("Enter state name:");
+            array1.find(contact => 
+                { if(contact.state == state)
+                    {
+                        console.log(contact.toString());
+                    }
+                    else
+                    {
+                        console.log("state name not existing!");
+                    }
+                });
+            break;
+    }
+} 
