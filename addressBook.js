@@ -113,7 +113,7 @@ let array1 = new Array();
 let choice;
 while(choice != 0)
 {
-    console.log("\n1.Add contacts\n 2.Display\n 3.Edit contacts\n 4.Delete contact");
+    console.log("\n1.Add contacts\n 2.Display\n 3.Edit contacts\n 4.Delete contact\n 5.Count number of contact");
     choice = Number(prompt("Enter your choice:"));
     switch(choice)
     {
@@ -128,6 +128,9 @@ while(choice != 0)
             break;
         case 4:
             deleteContact();
+            break;
+        case 5:
+            numberOfContact();
             break;
         default:
             console.log("Wrong choice.");   
@@ -214,4 +217,8 @@ function deleteContact() {
     else
         array1.splice(index, 1);
     console.log("Deleted successfuly!");
+}
+
+function numberOfContact() {
+    console.log("Total number of contacts:" + array1.length);
 }
