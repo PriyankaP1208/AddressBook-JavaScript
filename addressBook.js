@@ -139,7 +139,8 @@ while(choice != 0)
 
 function  createContact() {
     try{
-        let fName = prompt('Enter first name:');
+        let fName = prompt("Enter first name:");
+        noDuplicate(fName);
         let lName = prompt('Enter last name:');
         let address = prompt('Enter address:');
         let city = prompt('Enter city:');
@@ -221,4 +222,17 @@ function deleteContact() {
 
 function numberOfContact() {
     console.log("Total number of contacts:" + array1.length);
+}
+
+function noDuplicate(fName) {
+    if(array1.find(contact =>(contact.firstName == fName)))
+    {            
+        console.log("Name is already existing");
+        let fName = prompt("Enter first name:");
+        return fName;
+    }
+    else
+    {
+        console.log("Name is not existing");
+    }
 }
